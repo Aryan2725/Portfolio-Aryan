@@ -22,7 +22,7 @@ const LivePrototypes = () => {
     <section id="prototypes" className="py-28 px-6">
       <div className="container mx-auto max-w-5xl">
         <div className="section-fade-in">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Live Prototypes</p>
+          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Live AI Micro-Apps</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
             Shipped & Live
           </h2>
