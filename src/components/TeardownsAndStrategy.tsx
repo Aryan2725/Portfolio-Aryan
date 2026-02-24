@@ -1,4 +1,4 @@
-import { FileText, ArrowUpRight } from "lucide-react";
+import { FileText, Presentation, ArrowUpRight } from "lucide-react";
 
 const teardowns = [
   {
@@ -18,21 +18,22 @@ const teardowns = [
   },
 ];
 
-const ProductTeardowns = () => {
+const TeardownsAndStrategy = () => {
   return (
     <section className="py-28 px-6 border-t border-border">
       <div className="container mx-auto max-w-5xl">
         <div className="section-fade-in">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Product Teardowns</p>
+          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Product Teardowns & Strategy</p>
           <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-            Strategic Breakdowns
+            Analytical Deep-Dives
           </h2>
           <p className="text-muted-foreground text-lg mb-14 max-w-xl">
-            Analytical deep-dives into how top products win.
+            Strategic breakdowns of how top products win, plus original strategy work.
           </p>
         </div>
 
-        <div className="space-y-4">
+        {/* Teardown cards */}
+        <div className="space-y-4 mb-8">
           {teardowns.map((item, i) => (
             <div
               key={item.name}
@@ -55,9 +56,36 @@ const ProductTeardowns = () => {
             </div>
           ))}
         </div>
+
+        {/* Galaxy.ai strategy deck */}
+        <div className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1">
+          <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+            <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+              <Presentation className="w-6 h-6 text-primary" />
+            </div>
+
+            <div className="flex-1">
+              <div className="flex items-center gap-3 mb-2">
+                <h3 className="text-xl font-semibold text-foreground">Galaxy.ai</h3>
+                <span className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">Strategy Deck</span>
+              </div>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                A strategic slide deck outlining the vision for an AI-native productivity platform — 
+                rethinking how teams collaborate, plan, and execute in the age of generative AI.
+              </p>
+            </div>
+
+            <div className="shrink-0 mt-2 md:mt-0">
+              <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium group-hover:border-primary/40 transition-all duration-300">
+                View Deck
+                <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
+              </span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
 };
 
-export default ProductTeardowns;
+export default TeardownsAndStrategy;

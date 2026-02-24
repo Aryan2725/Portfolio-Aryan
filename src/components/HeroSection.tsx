@@ -31,7 +31,7 @@ const HeroSection = () => {
 
           {/* Subheadline */}
           <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            Combining M.Sc. Economics logic with AI-assisted vibe coding to ship product solutions fast.
+            Combining M.Sc. Economics & Management logic with AI-assisted vibe coding to ship product solutions fast.
           </p>
 
           {/* CTA */}
