@@ -1,6 +1,8 @@
 import { useState } from "react";
-import { CreditCard, Zap, ShoppingBag, Presentation, ArrowUpRight, Globe, X } from "lucide-react";
+import { CreditCard, Zap, ShoppingBag, Presentation, ArrowUpRight, Globe } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
+import { ScrollArea } from "@/components/ui/scroll-area";
+import CredBreakdown from "@/components/breakdowns/CredBreakdown";
 
 const teardowns = [
   {
@@ -140,24 +142,34 @@ const TeardownsAndStrategy = () => {
         </div>
       </div>
 
-      {/* Full-screen dark modal with iframe */}
+      {/* Full-screen dark modal */}
       <Dialog open={!!openId} onOpenChange={(open) => !open && setOpenId(null)}>
         <DialogContent className="max-w-[95vw] w-[95vw] h-[90vh] p-0 bg-card border-border gap-0 overflow-hidden">
-          <DialogTitle className="sr-only">{activeItem?.name} — {'subtitle' in (activeItem ?? {}) ? (activeItem as any).subtitle : (activeItem as any)?.label}</DialogTitle>
+          <DialogTitle className="sr-only">{activeItem?.name}</DialogTitle>
           <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
             <div className="flex items-center gap-3">
               {activeItem && <activeItem.icon className="w-5 h-5 text-primary" />}
               <span className="font-semibold text-foreground">{activeItem?.name}</span>
-              <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">{'subtitle' in (activeItem ?? {}) ? (activeItem as any).subtitle : (activeItem as any)?.label}</span>
+              <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">
+                {'subtitle' in (activeItem ?? {}) ? (activeItem as any).subtitle : (activeItem as any)?.label}
+              </span>
             </div>
           </div>
-          <iframe
-            src={activeItem?.iframeSrc ?? "about:blank"}
-            className="w-full flex-1 border-0"
-            style={{ height: "calc(90vh - 65px)" }}
-            title={activeItem?.name}
-            allow="fullscreen"
-          />
+          {openId === "cred" ? (
+            <ScrollArea className="flex-1" style={{ height: "calc(90vh - 65px)" }}>
+              <div className="max-w-3xl mx-auto px-6 md:px-10 py-8">
+                <CredBreakdown />
+              </div>
+            </ScrollArea>
+          ) : (
+            <iframe
+              src={activeItem?.iframeSrc ?? "about:blank"}
+              className="w-full flex-1 border-0"
+              style={{ height: "calc(90vh - 65px)" }}
+              title={activeItem?.name}
+              allow="fullscreen"
+            />
+          )}
         </DialogContent>
       </Dialog>
     </section>
