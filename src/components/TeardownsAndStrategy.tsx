@@ -4,32 +4,40 @@ import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 
 const teardowns = [
   {
+    id: "cred",
     name: "CRED",
     subtitle: "The Gamified Trust Loop",
     description: "A deep dive into how CRED uses psychological hooks and high-friction onboarding to create a 'walled garden' of high-trust users.",
     focus: "UX Psychology, Retention Loops, and Monetization Strategy",
     icon: CreditCard,
+    iframeSrc: "about:blank",
   },
   {
+    id: "razorpay",
     name: "Razorpay",
     subtitle: "The Infrastructure of Indian Fintech",
     description: "Analyzing the 'invisible' product—how Razorpay solved the fragmentation of Indian payments through developer-first documentation and seamless checkout flows.",
     focus: "Product-Led Growth (PLG), Documentation Design, and API Strategy",
     icon: Zap,
+    iframeSrc: "about:blank",
   },
   {
+    id: "snabbit",
     name: "Snabbit",
     subtitle: "Rapid Delivery vs. Unit Economics",
     description: "An operational breakdown of the 'quick commerce' model, analyzing the trade-offs between delivery speed and net margin sustainability.",
     focus: "Supply Chain Optimization, Logistics Logic, and Unit Economics",
     icon: ShoppingBag,
+    iframeSrc: "about:blank",
   },
   {
+    id: "upi",
     name: "UPI",
     subtitle: "Ecosystem Breakdown",
     description: "A detailed analysis of India's Unified Payments Interface—how an open protocol created the world's largest real-time payment network, reshaped fintech competition, and set the blueprint for digital public infrastructure globally.",
     focus: "Digital Public Infrastructure, Network Effects, and Policy Design",
     icon: Globe,
+    iframeSrc: "about:blank",
   },
 ];
 
@@ -46,8 +54,9 @@ const strategyDecks = [
 ];
 
 const TeardownsAndStrategy = () => {
-  const [openDeck, setOpenDeck] = useState<string | null>(null);
-  const activeDeck = strategyDecks.find((d) => d.id === openDeck);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const allItems = [...teardowns, ...strategyDecks];
+  const activeItem = allItems.find((d) => d.id === openId);
 
   return (
     <section className="py-28 px-6 border-t border-border">
@@ -81,7 +90,13 @@ const TeardownsAndStrategy = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed mb-1.5">{item.description}</p>
                 <p className="text-xs text-primary/80 font-medium">{item.focus}</p>
               </div>
-              <ArrowUpRight className="w-5 h-5 text-muted-foreground group-hover:text-primary transition-colors duration-300 shrink-0 hidden md:block" />
+              <button
+                onClick={() => setOpenId(item.id)}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-foreground text-sm font-medium hover:border-primary/40 transition-all duration-300 shrink-0"
+              >
+                View Full Breakdown
+                <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
+              </button>
             </div>
           ))}
         </div>
@@ -99,7 +114,7 @@ const TeardownsAndStrategy = () => {
           {strategyDecks.map((deck) => (
             <div
               key={deck.id}
-              onClick={() => setOpenDeck(deck.id)}
+              onClick={() => setOpenId(deck.id)}
               className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1"
             >
               <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
@@ -126,21 +141,21 @@ const TeardownsAndStrategy = () => {
       </div>
 
       {/* Full-screen dark modal with iframe */}
-      <Dialog open={!!openDeck} onOpenChange={(open) => !open && setOpenDeck(null)}>
+      <Dialog open={!!openId} onOpenChange={(open) => !open && setOpenId(null)}>
         <DialogContent className="max-w-[95vw] w-[95vw] h-[90vh] p-0 bg-card border-border gap-0 overflow-hidden">
-          <DialogTitle className="sr-only">{activeDeck?.name} — {activeDeck?.label}</DialogTitle>
+          <DialogTitle className="sr-only">{activeItem?.name} — {'subtitle' in (activeItem ?? {}) ? (activeItem as any).subtitle : (activeItem as any)?.label}</DialogTitle>
           <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
             <div className="flex items-center gap-3">
-              {activeDeck && <activeDeck.icon className="w-5 h-5 text-primary" />}
-              <span className="font-semibold text-foreground">{activeDeck?.name}</span>
-              <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">{activeDeck?.label}</span>
+              {activeItem && <activeItem.icon className="w-5 h-5 text-primary" />}
+              <span className="font-semibold text-foreground">{activeItem?.name}</span>
+              <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">{'subtitle' in (activeItem ?? {}) ? (activeItem as any).subtitle : (activeItem as any)?.label}</span>
             </div>
           </div>
           <iframe
-            src={activeDeck?.iframeSrc ?? "about:blank"}
+            src={activeItem?.iframeSrc ?? "about:blank"}
             className="w-full flex-1 border-0"
             style={{ height: "calc(90vh - 65px)" }}
-            title={activeDeck?.name}
+            title={activeItem?.name}
             allow="fullscreen"
           />
         </DialogContent>
