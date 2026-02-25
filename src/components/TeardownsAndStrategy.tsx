@@ -24,18 +24,16 @@ const teardowns = [
     focus: "Supply Chain Optimization, Logistics Logic, and Unit Economics",
     icon: ShoppingBag,
   },
+  {
+    name: "UPI",
+    subtitle: "Ecosystem Breakdown",
+    description: "A detailed analysis of India's Unified Payments Interface—how an open protocol created the world's largest real-time payment network, reshaped fintech competition, and set the blueprint for digital public infrastructure globally.",
+    focus: "Digital Public Infrastructure, Network Effects, and Policy Design",
+    icon: Globe,
+  },
 ];
 
 const strategyDecks = [
-  {
-    id: "upi",
-    name: "UPI",
-    label: "Ecosystem Breakdown",
-    description: "A detailed analysis of India's Unified Payments Interface—how an open protocol created the world's largest real-time payment network, reshaped fintech competition, and set the blueprint for digital public infrastructure globally.",
-    icon: Globe,
-    featured: false,
-    iframeSrc: "about:blank",
-  },
   {
     id: "galaxy",
     name: "Galaxy.ai",
@@ -98,59 +96,32 @@ const TeardownsAndStrategy = () => {
         </div>
 
         <div className="space-y-4">
-          {strategyDecks.map((deck) =>
-            deck.featured ? (
-              /* Galaxy.ai — Featured Wide Card */
-              <div
-                key={deck.id}
-                onClick={() => setOpenDeck(deck.id)}
-                className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1"
-              >
-                <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                  <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                    <deck.icon className="w-6 h-6 text-primary" />
-                  </div>
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-2">
-                      <h3 className="text-xl font-semibold text-foreground">{deck.name}</h3>
-                      <span className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">{deck.label}</span>
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{deck.description}</p>
-                  </div>
-                  <div className="shrink-0 mt-2 md:mt-0">
-                    <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium group-hover:border-primary/40 transition-all duration-300">
-                      View Full Breakdown
-                      <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
-                    </span>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              /* UPI — Standard Card */
-              <div
-                key={deck.id}
-                onClick={() => setOpenDeck(deck.id)}
-                className="group glow-border-hover rounded-xl bg-card p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 cursor-pointer transition-all duration-500 hover:-translate-y-0.5"
-              >
-                <div className="flex items-center gap-4 md:w-56 shrink-0">
-                  <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                    <deck.icon className="w-5 h-5 text-primary" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-foreground text-lg">{deck.name}</h3>
-                    <span className="text-xs text-muted-foreground">{deck.label}</span>
-                  </div>
+          {strategyDecks.map((deck) => (
+            <div
+              key={deck.id}
+              onClick={() => setOpenDeck(deck.id)}
+              className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1"
+            >
+              <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
+                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                  <deck.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div className="flex-1">
+                  <div className="flex items-center gap-3 mb-2">
+                    <h3 className="text-xl font-semibold text-foreground">{deck.name}</h3>
+                    <span className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">{deck.label}</span>
+                  </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">{deck.description}</p>
                 </div>
-                <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium group-hover:border-primary/40 transition-all duration-300 shrink-0">
-                  View Full Breakdown
-                  <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
-                </span>
+                <div className="shrink-0 mt-2 md:mt-0">
+                  <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium group-hover:border-primary/40 transition-all duration-300">
+                    View Full Breakdown
+                    <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
+                  </span>
+                </div>
               </div>
-            )
-          )}
+            </div>
+          ))}
         </div>
       </div>
 
