@@ -37,7 +37,8 @@ const HeroSection = () => {
           {/* CTA */}
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
-              href="#"
+              href="/Aryan_Singhal_Resume.pdf"
+              download="Aryan_Singhal_Resume.pdf"
               className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-medium text-base hover:brightness-110 transition-all duration-300 shadow-[0_0_20px_-5px_hsl(var(--glow)/0.4)]"
             >
               <Download className="w-4 h-4" />
