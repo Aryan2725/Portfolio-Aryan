@@ -6,6 +6,7 @@ import CredBreakdown from "@/components/breakdowns/CredBreakdown";
 import RazorpayBreakdown from "@/components/breakdowns/RazorpayBreakdown";
 import SnabbitBreakdown from "@/components/breakdowns/SnabbitBreakdown";
 import UpiBreakdown from "@/components/breakdowns/UpiBreakdown";
+import GalaxyBreakdown from "@/components/breakdowns/GalaxyBreakdown";
 
 const teardowns = [
   {
@@ -158,13 +159,14 @@ const TeardownsAndStrategy = () => {
               </span>
             </div>
           </div>
-          {openId === "cred" || openId === "razorpay" || openId === "snabbit" || openId === "upi" ? (
+          {openId === "cred" || openId === "razorpay" || openId === "snabbit" || openId === "upi" || openId === "galaxy" ? (
             <ScrollArea className="flex-1" style={{ height: "calc(90vh - 65px)" }}>
               <div className="max-w-3xl mx-auto px-6 md:px-10 py-8">
                 {openId === "cred" && <CredBreakdown />}
                 {openId === "razorpay" && <RazorpayBreakdown />}
                 {openId === "snabbit" && <SnabbitBreakdown />}
                 {openId === "upi" && <UpiBreakdown />}
+                {openId === "galaxy" && <GalaxyBreakdown />}
               </div>
             </ScrollArea>
           ) : (
