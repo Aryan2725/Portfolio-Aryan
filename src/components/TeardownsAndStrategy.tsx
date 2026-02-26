@@ -3,6 +3,7 @@ import { CreditCard, Zap, ShoppingBag, Presentation, ArrowUpRight, Globe } from 
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import CredBreakdown from "@/components/breakdowns/CredBreakdown";
+import RazorpayBreakdown from "@/components/breakdowns/RazorpayBreakdown";
 
 const teardowns = [
   {
@@ -155,10 +156,11 @@ const TeardownsAndStrategy = () => {
               </span>
             </div>
           </div>
-          {openId === "cred" ? (
+          {openId === "cred" || openId === "razorpay" ? (
             <ScrollArea className="flex-1" style={{ height: "calc(90vh - 65px)" }}>
               <div className="max-w-3xl mx-auto px-6 md:px-10 py-8">
-                <CredBreakdown />
+                {openId === "cred" && <CredBreakdown />}
+                {openId === "razorpay" && <RazorpayBreakdown />}
               </div>
             </ScrollArea>
           ) : (
