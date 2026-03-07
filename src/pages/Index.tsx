@@ -4,7 +4,7 @@ import LivePrototypes from "@/components/LivePrototypes";
 import FeaturedProject from "@/components/FeaturedProject";
 import TeardownsAndStrategy from "@/components/TeardownsAndStrategy";
 import Footer from "@/components/Footer";
-import { X, FileBadge } from "lucide-react";
+import { X, FileBadge, Users, Target, BookOpen } from "lucide-react";
 
 const Index = () => {
   // State to control the certificate modal
@@ -58,16 +58,59 @@ const Index = () => {
         </div>
       </section>
 
+      {/* --- LEADERSHIP & COMMUNITY SECTION --- */}
+      <section className="py-20 bg-background" id="leadership">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <h2 className="text-3xl font-bold mb-10 text-center">Leadership & Community</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            
+            <div className="flex flex-col p-8 border border-border rounded-xl bg-secondary/10 hover:border-primary/50 transition-all shadow-sm">
+              <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6">
+                <Users className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-xl text-foreground mb-2">Lead & Founder</h3>
+              <h4 className="text-sm font-semibold text-primary mb-4">Standup Product Management Club</h4>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Established IIIT Lucknow's first PM community. Scaled to 30+ members and designed a curriculum covering Agile workflows, PRD creation, and 0-to-1 product teardowns.
+              </p>
+            </div>
+
+            <div className="flex flex-col p-8 border border-border rounded-xl bg-secondary/10 hover:border-primary/50 transition-all shadow-sm">
+              <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6">
+                <BookOpen className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-xl text-foreground mb-2">Lead Instructor</h3>
+              <h4 className="text-sm font-semibold text-primary mb-4">PM Bootcamp</h4>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Running a highly selective bootcamp teaching candidates core PM concepts, metrics tracking, and guiding hands-on product projects from ideation to launch.
+              </p>
+            </div>
+
+            <div className="flex flex-col p-8 border border-border rounded-xl bg-secondary/10 hover:border-primary/50 transition-all shadow-sm">
+              <div className="w-12 h-12 bg-primary/10 text-primary rounded-lg flex items-center justify-center mb-6">
+                <Target className="w-6 h-6" />
+              </div>
+              <h3 className="font-bold text-xl text-foreground mb-2">Founding Member</h3>
+              <h4 className="text-sm font-semibold text-primary mb-4">DOMH Masterclass</h4>
+              <p className="text-muted-foreground leading-relaxed text-sm">
+                Spearheaded an initiative to upskill juniors in high-leverage tools: Advanced Excel, SQL, Power BI, Python, Agile workflows, and Case Study analysis.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* --- CERTIFICATES SECTION --- */}
-      <section className="py-20 bg-background" id="certificates">
+      <section className="py-20 bg-secondary/20" id="certificates">
         <div className="container mx-auto px-6 max-w-4xl">
           <h2 className="text-3xl font-bold mb-10 text-center">Certifications</h2>
           <div className="space-y-4">
             
             {/* Certificate 1 */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-secondary/10 hover:bg-secondary/30 transition-colors">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
               <div>
-                <h3 className="font-bold text-lg text-foreground">Product Roadmapping Micro-Certification (PRC)</h3>
+                <h3 className="font-bold text-lg text-foreground">Product Strategy Micro-Certification (PRC)</h3>
                 <p className="text-sm text-muted-foreground mt-1">Expertise in defining product-market fit and roadmap prioritization.</p>
               </div>
               <button 
@@ -79,7 +122,7 @@ const Index = () => {
             </div>
 
             {/* Certificate 2 */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-secondary/10 hover:bg-secondary/30 transition-colors">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
               <div>
                 <h3 className="font-bold text-lg text-foreground">Product Analytics Micro-Certification (PAC)</h3>
                 <p className="text-sm text-muted-foreground mt-1">Expertise in using data to measure post-launch performance and user behavior.</p>
@@ -93,7 +136,7 @@ const Index = () => {
             </div>
 
             {/* Certificate 3 */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-secondary/10 hover:bg-secondary/30 transition-colors">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
               <div>
                 <h3 className="font-bold text-lg text-foreground">Artificial Intelligence Micro-Certification (AIC)</h3>
                 <p className="text-sm text-muted-foreground mt-1">Mastery in prompt engineering and LLM orchestration for digital products.</p>
