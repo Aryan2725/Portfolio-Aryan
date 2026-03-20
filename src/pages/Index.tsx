@@ -110,7 +110,7 @@ const Index = () => {
             {/* Certificate 1 */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
               <div>
-                <h3 className="font-bold text-lg text-foreground">Product Strategy Micro-Certification (PRC)</h3>
+                <h3 className="font-bold text-lg text-foreground">Product Roadmapping Micro-Certification (PRC)</h3>
                 <p className="text-sm text-muted-foreground mt-1">Expertise in defining product-market fit and roadmap prioritization.</p>
               </div>
               <button 
@@ -143,6 +143,49 @@ const Index = () => {
               </div>
               <button 
                 onClick={() => handleOpenCert("https://drive.google.com/file/d/1DYYcLeVXDevuy8FEfTPPpIKlg4WpnLFL/view?usp=sharing")}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-lg text-sm font-medium transition-colors shrink-0"
+              >
+                <FileBadge className="w-4 h-4" /> View Certificate
+              </button>
+            </div>
+
+            {/* Certificate 4 */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
+              <div>
+                <h3 className="font-bold text-lg text-foreground">Product Strategy Micro-Certification (AIC)</h3>
+                <p className="text-sm text-muted-foreground mt-1">Mastered problem discovery, unit economics,roadmap prioritization, and Product Strategy.</p>
+              </div>
+              <button 
+                onClick={() => handleOpenCert("https://drive.google.com/file/d/1yDhAyehvN6YC2EI5fZ7pm42KmLHtSxwA/view?usp=sharing")}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-lg text-sm font-medium transition-colors shrink-0"
+              >
+                <FileBadge className="w-4 h-4" /> View Certificate
+              </button>
+            </div>
+
+            {/* Certificate 5 */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
+              <div>
+                <h3 className="font-bold text-lg text-foreground">Mckinsey Forward Program</h3>
+                <p className="text-sm text-muted-foreground mt-1">Developed executive-level problem-solving, structured communication, and adaptable leadership skills. Trained to navigate complex business challenges, synthesize data-driven insights, and drive cross-functional alignment in fast-paced operational environments.</p>
+              </div>
+              <button 
+                onClick={() => handleOpenCert("https://drive.google.com/file/d/1Ngga6_GWPu1k1H5XCz12Su3wwjRZpxiL/view?usp=sharing")}
+                className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-lg text-sm font-medium transition-colors shrink-0"
+              >
+                <FileBadge className="w-4 h-4" /> View Certificate
+              </button>
+            </div>
+
+            
+            {/* Certificate 6 */}
+            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
+              <div>
+                <h3 className="font-bold text-lg text-foreground">Lead Auditor (ISO 9001:2015 - QMS)</h3>
+                <p className="text-sm text-muted-foreground mt-1">Certified by Exemplar Global to lead management system audit teams. Built rigorous QA frameworks and process compliance protocols to ensure operational excellence, risk mitigation, and continuous product improvement.</p>
+              </div>
+              <button 
+                onClick={() => handleOpenCert("https://drive.google.com/file/d/1f42O1xO_A5J-47pNxNhtrUJRxWJXGhfS/view?usp=sharing")}
                 className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary hover:bg-primary/20 rounded-lg text-sm font-medium transition-colors shrink-0"
               >
                 <FileBadge className="w-4 h-4" /> View Certificate
