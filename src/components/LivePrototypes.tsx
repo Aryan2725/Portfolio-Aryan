@@ -15,6 +15,13 @@ const projects = [
     icon: TrendingUp,
     tags: ["Finance", "Analytics", "Modeling"],
   },
+  {
+    title: "Capital Plus Insight (Runway Copilot)",
+    description: "AI-powered startup runway forecaster. Analyzes real-time burn rates and financial data to predict cash-out dates and recommend strategic runway extensions.",
+    link: "https://capitalplus-insights.vercel.app/",
+    icon: TrendingUp,
+    tags: ["Finance", "AI", "Strategy"],
+  },
 ];
 
 const LivePrototypes = () => {
