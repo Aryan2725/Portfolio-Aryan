@@ -55,7 +55,14 @@ const strategyDecks = [
     description: "A comprehensive strategy breakdown exploring the future of AI-integrated ecosystems. This deck highlights my ability to synthesize market trends, identify competitive moats, and articulate a long-term product vision.",
     icon: Presentation,
     featured: true,
-    iframeSrc: "about:blank",
+  },
+  {
+    id: "logistic-optimizer",
+    name: "Logistic Optimizer: Solving Last-Mile Dispatch Inefficiency",
+    description: "A data-driven strategy deck breaking down how to shift B2B logistics from reactive status tracking to proactive, exception-based management. Includes system architecture, SLA urgency scoring, and a projected unit economics breakdown of ₹21.6L/year in recovered penalties.",
+    tags: ["Unit Economics", "Operations Strategy", "Predictive Signals"],
+    icon: Presentation,
+    directLink: "/logistic_optimizer_strategy_deck.pdf", 
   },
 ];
 
@@ -80,6 +87,7 @@ const TeardownsAndStrategy = () => {
           {teardowns.map((item, i) => (
             <div
               key={item.name}
+              onClick={() => setOpenId(item.id)}
               className="group glow-border-hover rounded-xl bg-card p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 cursor-pointer transition-all duration-500 hover:-translate-y-0.5"
               style={{ animationDelay: `${i * 100}ms` }}
             >
@@ -97,7 +105,6 @@ const TeardownsAndStrategy = () => {
                 <p className="text-xs text-primary/80 font-medium">{item.focus}</p>
               </div>
               <button
-                onClick={() => setOpenId(item.id)}
                 className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-foreground text-sm font-medium hover:border-primary/40 transition-all duration-300 shrink-0"
               >
                 View Full Breakdown
@@ -110,39 +117,66 @@ const TeardownsAndStrategy = () => {
         {/* Strategic Research */}
         <div className="section-fade-in">
           <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Strategic Research</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Strategy & Vision Decks</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Strategy Decks</h2>
           <p className="text-muted-foreground text-lg mb-14 max-w-xl">
             Original strategy work and ecosystem analyses.
           </p>
         </div>
 
-        <div className="space-y-4">
-          {strategyDecks.map((deck) => (
-            <div
-              key={deck.id}
-              onClick={() => setOpenId(deck.id)}
-              className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1"
-            >
-              <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
-                <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                  <deck.icon className="w-6 h-6 text-primary" />
-                </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          {strategyDecks.map((deck) => {
+            // Reusable card content
+            const CardContent = (
+              <>
                 <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <h3 className="text-xl font-semibold text-foreground">{deck.name}</h3>
-                    <span className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">{deck.label}</span>
+                  <div className="flex items-start gap-4 mb-3">
+                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
+                      <deck.icon className="w-6 h-6 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-foreground mb-2">{deck.name}</h3>
+                      <div className="flex items-center gap-2 flex-wrap">
+                        {deck.label && <span className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">{deck.label}</span>}
+                        {deck.tags && deck.tags.map(tag => <span key={tag} className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">{tag}</span>)}
+                      </div>
+                    </div>
                   </div>
                   <p className="text-muted-foreground text-sm leading-relaxed">{deck.description}</p>
                 </div>
-                <div className="shrink-0 mt-2 md:mt-0">
+                <div className="shrink-0 mt-6">
                   <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium group-hover:border-primary/40 transition-all duration-300">
-                    View Full Breakdown
+                    View the full breakdown
                     <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
                   </span>
                 </div>
+              </>
+            );
+
+            // If it has a directLink, wrap it in an <a> tag targeting the same tab
+            if (deck.directLink) {
+              return (
+                <a
+                  key={deck.id}
+                  href={deck.directLink}
+                  target="_self"
+                  className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1 flex flex-col no-underline block"
+                >
+                  {CardContent}
+                </a>
+              );
+            }
+
+            // Otherwise, keep the default Modal opening behavior
+            return (
+              <div
+                key={deck.id}
+                onClick={() => setOpenId(deck.id)}
+                className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1 flex flex-col"
+              >
+                {CardContent}
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 
@@ -152,14 +186,16 @@ const TeardownsAndStrategy = () => {
           <DialogTitle className="sr-only">{activeItem?.name}</DialogTitle>
           <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
             <div className="flex items-center gap-3">
-              {activeItem && <activeItem.icon className="w-5 h-5 text-primary" />}
+              {activeItem && "icon" in activeItem && <activeItem.icon className="w-5 h-5 text-primary" />}
               <span className="font-semibold text-foreground">{activeItem?.name}</span>
-              <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">
-                {'subtitle' in (activeItem ?? {}) ? (activeItem as any).subtitle : (activeItem as any)?.label}
-              </span>
+              {activeItem && ("subtitle" in activeItem || "label" in activeItem) && (
+                <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">
+                  {'subtitle' in activeItem ? activeItem.subtitle : activeItem.label}
+                </span>
+              )}
             </div>
           </div>
-          {openId === "cred" || openId === "razorpay" || openId === "snabbit" || openId === "upi" || openId === "galaxy" ? (
+          {openId && ["cred", "razorpay", "snabbit", "upi", "galaxy"].includes(openId) ? (
             <ScrollArea className="flex-1" style={{ height: "calc(90vh - 65px)" }}>
               <div className="max-w-3xl mx-auto px-6 md:px-10 py-8">
                 {openId === "cred" && <CredBreakdown />}
@@ -171,7 +207,7 @@ const TeardownsAndStrategy = () => {
             </ScrollArea>
           ) : (
             <iframe
-              src={activeItem?.iframeSrc ?? "about:blank"}
+              src={"iframeSrc" in (activeItem || {}) ? (activeItem as any).iframeSrc : "about:blank"}
               className="w-full flex-1 border-0"
               style={{ height: "calc(90vh - 65px)" }}
               title={activeItem?.name}
