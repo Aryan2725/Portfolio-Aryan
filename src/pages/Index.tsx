@@ -3,7 +3,8 @@ import HeroSection from "@/components/HeroSection";
 import LivePrototypes from "@/components/LivePrototypes";
 import FeaturedProject from "@/components/FeaturedProject";
 import TeardownsAndStrategy from "@/components/TeardownsAndStrategy";
-import OperationalCaseStudies from "@/components/OperationalCaseStudies"; // New Import
+import OperationalCaseStudies from "@/components/OperationalCaseStudies";
+import ProductDocumentation from "@/components/ProductDocumentation"; // New Import
 import Footer from "@/components/Footer";
 import { X, FileBadge, Users, Target, BookOpen } from "lucide-react";
 
@@ -33,11 +34,12 @@ const Index = () => {
         </div>
       </section>
 
-      {/* --- CORE WORK (PROJECTS, STRATEGY, & OPS) --- */}
+      {/* --- CORE WORK (PROJECTS, STRATEGY, OPS, & PRDs) --- */}
       <LivePrototypes />
       <FeaturedProject />
       <TeardownsAndStrategy />
-      <OperationalCaseStudies /> {/* Integrated New Section */}
+      <OperationalCaseStudies />
+      <ProductDocumentation /> {/* Integrated PRD Section */}
 
       {/* --- SKILLS SECTION --- */}
       <section className="py-20 bg-secondary/20" id="skills">
