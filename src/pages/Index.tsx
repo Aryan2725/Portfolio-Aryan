@@ -3,6 +3,7 @@ import HeroSection from "@/components/HeroSection";
 import LivePrototypes from "@/components/LivePrototypes";
 import FeaturedProject from "@/components/FeaturedProject";
 import TeardownsAndStrategy from "@/components/TeardownsAndStrategy";
+import OperationalCaseStudies from "@/components/OperationalCaseStudies"; // New Import
 import Footer from "@/components/Footer";
 import { X, FileBadge, Users, Target, BookOpen } from "lucide-react";
 
@@ -32,10 +33,11 @@ const Index = () => {
         </div>
       </section>
 
-      {/* --- CORE WORK (PROJECTS & STRATEGY) --- */}
+      {/* --- CORE WORK (PROJECTS, STRATEGY, & OPS) --- */}
       <LivePrototypes />
       <FeaturedProject />
       <TeardownsAndStrategy />
+      <OperationalCaseStudies /> {/* Integrated New Section */}
 
       {/* --- SKILLS SECTION --- */}
       <section className="py-20 bg-secondary/20" id="skills">
@@ -45,13 +47,13 @@ const Index = () => {
             <div className="bg-background border border-border p-8 rounded-xl shadow-sm hover:shadow-md transition-all text-center md:text-left">
               <h3 className="font-bold text-xl mb-4 text-foreground">Tech Stack</h3>
               <p className="text-muted-foreground leading-relaxed">
-                AI Builder Stack (Firebase Genkit, Gemini, Lovable, Emergent, Google AI Studio, Google opal), SQL (Intermediate), Advanced Excel (VBA/Pivot), Figma.
+                AI Builder Stack (Firebase Genkit, Gemini, Lovable, Emergent, Google AI Studio, Google Opal), SQL (Intermediate), Advanced Excel (VBA/Pivot), Figma.
               </p>
             </div>
             <div className="bg-background border border-border p-8 rounded-xl shadow-sm hover:shadow-md transition-all text-center md:text-left">
               <h3 className="font-bold text-xl mb-4 text-foreground">Core Competencies</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Unit Economics (CAC/LTV), P&L Auditing, Regulatory Compliance, Stakeholder Management, Agile Methodologies (JIRA), Process Scaling, Aasna, Trello, Confluense, ExcaliDraw.
+                Unit Economics (CAC/LTV), P&L Auditing, Regulatory Compliance, Stakeholder Management, Agile Methodologies (JIRA), Process Scaling, Asana, Trello, Confluence, ExcaliDraw.
               </p>
             </div>
           </div>
@@ -153,7 +155,7 @@ const Index = () => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
               <div>
                 <h3 className="font-bold text-lg text-foreground">Product Strategy Micro-Certification (AIC)</h3>
-                <p className="text-sm text-muted-foreground mt-1">Mastered problem discovery, unit economics,roadmap prioritization, and Product Strategy.</p>
+                <p className="text-sm text-muted-foreground mt-1">Mastered problem discovery, unit economics, roadmap prioritization, and Product Strategy.</p>
               </div>
               <button 
                 onClick={() => handleOpenCert("https://drive.google.com/file/d/1yDhAyehvN6YC2EI5fZ7pm42KmLHtSxwA/view?usp=sharing")}
@@ -166,8 +168,8 @@ const Index = () => {
             {/* Certificate 5 */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
               <div>
-                <h3 className="font-bold text-lg text-foreground">Mckinsey Forward Program</h3>
-                <p className="text-sm text-muted-foreground mt-1">Developed executive-level problem-solving, structured communication, and adaptable leadership skills. Trained to navigate complex business challenges, synthesize data-driven insights, and drive cross-functional alignment in fast-paced operational environments.</p>
+                <h3 className="font-bold text-lg text-foreground">McKinsey Forward Program</h3>
+                <p className="text-sm text-muted-foreground mt-1">Developed executive-level problem-solving, structured communication, and adaptable leadership skills. Trained to navigate complex business challenges and drive cross-functional alignment.</p>
               </div>
               <button 
                 onClick={() => handleOpenCert("https://drive.google.com/file/d/1Ngga6_GWPu1k1H5XCz12Su3wwjRZpxiL/view?usp=sharing")}
@@ -177,12 +179,11 @@ const Index = () => {
               </button>
             </div>
 
-            
             {/* Certificate 6 */}
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 p-6 border border-border rounded-xl bg-background hover:bg-secondary/30 transition-colors">
               <div>
                 <h3 className="font-bold text-lg text-foreground">Lead Auditor (ISO 9001:2015 - QMS)</h3>
-                <p className="text-sm text-muted-foreground mt-1">Certified by Exemplar Global to lead management system audit teams. Built rigorous QA frameworks and process compliance protocols to ensure operational excellence, risk mitigation, and continuous product improvement.</p>
+                <p className="text-sm text-muted-foreground mt-1">Certified by Exemplar Global to lead management system audit teams. Built rigorous QA frameworks and process compliance protocols to ensure operational excellence.</p>
               </div>
               <button 
                 onClick={() => handleOpenCert("https://drive.google.com/file/d/1f42O1xO_A5J-47pNxNhtrUJRxWJXGhfS/view?usp=sharing")}
@@ -217,6 +218,7 @@ const Index = () => {
                 className="w-full h-full border-none"
                 title="Certificate Viewer"
                 allow="autoplay"
+                allowFullScreen
               />
             </div>
           </div>
