@@ -1,4 +1,4 @@
-import { ArrowUpRight, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowUpRight, Sparkles, TrendingUp, Terminal, Truck } from "lucide-react";
 
 const projects = [
   {
@@ -7,6 +7,20 @@ const projects = [
     link: "https://jiragenius.vercel.app/",
     icon: Sparkles,
     tags: ["AI", "Automation", "SaaS"],
+  },
+  {
+    title: "Astra (B2B Sales Agent)",
+    description: "A context-aware Agentic AI dashboard designed for SMBs. Features simulated RAG for lead enrichment and Vector CRM memory to generate hyper-personalized outbound sequences.",
+    link: "https://astra-sales-agent.vercel.app/",
+    icon: Terminal,
+    tags: ["Agentic AI", "CRM", "B2B"],
+  },
+  {
+    title: "Logistic Optimizer Engine",
+    description: "Exception-based dispatch routing dashboard. Calculates real-time SLA Urgency Scores to surface at-risk deliveries and prevent financial penalty leakages.",
+    link: "https://logistics-command.vercel.app/", 
+    icon: Truck,
+    tags: ["Operations", "Logistics", "Analytics"],
   },
   {
     title: "FinPath Simulator",
@@ -43,7 +57,7 @@ const LivePrototypes = () => {
             <a
               key={project.title}
               href={project.link}
-              target="_blank"
+              target={project.link === "#" ? "_self" : "_blank"}
               rel="noopener noreferrer"
               className="group glow-border-hover rounded-xl bg-card p-8 flex flex-col justify-between min-h-[280px] transition-all duration-500 hover:-translate-y-1"
             >
@@ -58,7 +72,7 @@ const LivePrototypes = () => {
                 <p className="text-muted-foreground text-sm leading-relaxed">{project.description}</p>
               </div>
 
-              <div className="flex items-center gap-2 mt-6 pt-6 border-t border-border">
+              <div className="flex items-center flex-wrap gap-2 mt-6 pt-6 border-t border-border">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
