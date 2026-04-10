@@ -62,7 +62,7 @@ const strategyDecks = [
     description: "A data-driven strategy deck breaking down how to shift B2B logistics from reactive status tracking to proactive, exception-based management. Includes system architecture, SLA urgency scoring, and a projected unit economics breakdown of ₹21.6L/year in recovered penalties.",
     tags: ["Unit Economics", "Operations Strategy", "Predictive Signals"],
     icon: Presentation,
-    directLink: "/logistic_optimizer_strategy_deck.pdf", 
+    directLink: "logistic_optimizer_strategy_deck.pdf", 
   },
 ];
 
@@ -152,13 +152,14 @@ const TeardownsAndStrategy = () => {
               </>
             );
 
-            // If it has a directLink, wrap it in an <a> tag targeting the same tab
+            // If it has a directLink, wrap it in an <a> tag targeting a blank tab
             if (deck.directLink) {
               return (
                 <a
                   key={deck.id}
                   href={deck.directLink}
-                  target="_self"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1 flex flex-col no-underline block"
                 >
                   {CardContent}
