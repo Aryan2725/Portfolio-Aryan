@@ -41,7 +41,7 @@ const certifications = [
     link: "https://drive.google.com/file/d/1DYYcLeVXDevuy8FEfTPPpIKlg4WpnLFL/view?usp=sharing"
   },
   {
-    title: "Product Strategy Micro-Certification (AIC)",
+    title: "Product Strategy Micro-Certification (PSC)",
     desc: "Mastered problem discovery, unit economics, roadmap prioritization, and Product Strategy.",
     link: "https://drive.google.com/file/d/1yDhAyehvN6YC2EI5fZ7pm42KmLHtSxwA/view?usp=sharing"
   },
