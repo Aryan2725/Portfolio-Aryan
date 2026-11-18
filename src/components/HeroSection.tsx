@@ -63,7 +63,7 @@ export const HeroSection = () => {
           </button>
 
           <a
-            href="https://drive.google.com/drive/folders/1zOA9VTfNonvN4g8Up23I9lOHER8Gnd65?usp=sharing"
+            href="/Aryan_Singhal_Resume.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-border bg-card text-foreground font-medium text-sm hover:bg-secondary/60 transition-all"

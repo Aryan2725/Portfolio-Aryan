@@ -1,6 +1,6 @@
 'use client';
 
-import { Calendar, ArrowUpRight } from "lucide-react";
+import { Calendar, ArrowUpRight, FileText } from "lucide-react";
 
 export const Navbar = () => {
   return (
@@ -41,6 +41,16 @@ export const Navbar = () => {
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
             <span>Series A / B · Immediate</span>
           </div>
+
+          <a
+            href="/Aryan_Singhal_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hidden sm:inline-flex items-center gap-1 px-2.5 py-1.5 rounded border border-border bg-card text-xs font-mono text-muted-foreground hover:text-foreground hover:border-white/[0.2] transition-colors"
+          >
+            <FileText className="w-3.5 h-3.5" />
+            <span>Resume</span>
+          </a>
 
           <a
             href="https://calendly.com/aryansinghal352/30min"

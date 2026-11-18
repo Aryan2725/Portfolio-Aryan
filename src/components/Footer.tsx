@@ -1,4 +1,4 @@
-import { Linkedin, Github, Mail, Calendar } from "lucide-react";
+import { Linkedin, Github, Mail, Calendar, FileText } from "lucide-react";
 
 export const Footer = () => {
   return (
@@ -15,6 +15,7 @@ export const Footer = () => {
 
         <div className="flex items-center gap-2">
           {[
+            { icon: FileText, label: "Resume", href: "/Aryan_Singhal_Resume.pdf" },
             { icon: Calendar, label: "Book 15-min Call", href: "https://calendly.com/aryansinghal352/30min" },
             { icon: Mail, label: "Email", href: "mailto:aryansinghal352@gmail.com" },
             { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/in/aryan-singhal-3583b8331/" },
