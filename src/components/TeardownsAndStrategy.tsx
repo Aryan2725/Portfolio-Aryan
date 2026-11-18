@@ -1,5 +1,7 @@
+'use client';
+
 import { useState } from "react";
-import { CreditCard, Zap, ShoppingBag, Presentation, ArrowUpRight, Globe } from "lucide-react";
+import { CreditCard, Zap, ShoppingBag, Globe, ArrowUpRight, Presentation, FileText, Layers, X } from "lucide-react";
 import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import CredBreakdown from "@/components/breakdowns/CredBreakdown";
@@ -8,151 +10,163 @@ import SnabbitBreakdown from "@/components/breakdowns/SnabbitBreakdown";
 import UpiBreakdown from "@/components/breakdowns/UpiBreakdown";
 import GalaxyBreakdown from "@/components/breakdowns/GalaxyBreakdown";
 
-const teardowns = [
+interface TeardownItem {
+  id: string;
+  name: string;
+  subtitle: string;
+  description: string;
+  focus: string;
+  icon: any;
+}
+
+const teardowns: TeardownItem[] = [
   {
     id: "cred",
     name: "CRED",
-    subtitle: "The Gamified Trust Loop",
-    description: "A deep dive into how CRED uses psychological hooks and high-friction onboarding to create a 'walled garden' of high-trust users.",
-    focus: "UX Psychology, Retention Loops, and Monetization Strategy",
+    subtitle: "Gamified Trust Loops & Retention",
+    description: "Deep dive into psychological hooks, credit gating, and monetization via adjacent financial products.",
+    focus: "Behavioral Economics · Habit Formation · Monetization Layers",
     icon: CreditCard,
-    iframeSrc: "about:blank",
   },
   {
     id: "razorpay",
     name: "Razorpay",
-    subtitle: "The Infrastructure of Indian Fintech",
-    description: "Analyzing the 'invisible' product—how Razorpay solved the fragmentation of Indian payments through developer-first documentation and seamless checkout flows.",
-    focus: "Product-Led Growth (PLG), Documentation Design, and API Strategy",
+    subtitle: "B2B Infrastructure & API-Led Growth",
+    description: "Analyzing developer-first documentation, automated payout pipelines, and the transition into full-stack business banking.",
+    focus: "Developer Ergonomics · PLG · Corporate Banking Workflows",
     icon: Zap,
-    iframeSrc: "about:blank",
   },
   {
     id: "snabbit",
     name: "Snabbit",
-    subtitle: "Rapid Delivery vs. Unit Economics",
-    description: "An operational breakdown of the 'quick commerce' model, analyzing the trade-offs between delivery speed and net margin sustainability.",
-    focus: "Supply Chain Optimization, Logistics Logic, and Unit Economics",
+    subtitle: "Hyperlocal SLAs vs. Contribution Margins",
+    description: "Operational breakdown of 10-minute home service fulfillment, technician bench utilization, and geographic cluster density.",
+    focus: "Supply Chain Density · Dispatch Optimization · Unit Economics",
     icon: ShoppingBag,
-    iframeSrc: "about:blank",
   },
   {
     id: "upi",
     name: "UPI",
-    subtitle: "Ecosystem Breakdown",
-    description: "A detailed analysis of India's Unified Payments Interface—how an open protocol created the world's largest real-time payment network, reshaped fintech competition, and set the blueprint for digital public infrastructure globally.",
-    focus: "Digital Public Infrastructure, Network Effects, and Policy Design",
+    subtitle: "Digital Public Infrastructure",
+    description: "Deconstructing India's real-time interoperable protocol, zero-fee payment rails, and downstream merchant monetization.",
+    focus: "Network Effects · Open Protocols · Financial Inclusion",
     icon: Globe,
-    iframeSrc: "about:blank",
   },
 ];
 
 const strategyDecks = [
   {
     id: "galaxy",
-    name: "Galaxy.ai",
-    label: "Strategic Vision Deck",
-    description: "A comprehensive strategy breakdown exploring the future of AI-integrated ecosystems. This deck highlights my ability to synthesize market trends, identify competitive moats, and articulate a long-term product vision.",
+    name: "Galaxy.ai: Market Gap Analysis",
+    subtitle: "Strategic Vision Deck",
+    description: "Comprehensive competitive strategy detailing the transition from a fragmented model aggregator into an outcome-oriented agentic workspace.",
+    focus: "Competitive Strategy · Pricing Moats · Retention Flywheels",
     icon: Presentation,
-    featured: true,
   },
   {
     id: "logistic-optimizer",
-    name: "Logistic Optimizer: Solving Last-Mile Dispatch Inefficiency",
-    description: "A data-driven strategy deck breaking down how to shift B2B logistics from reactive status tracking to proactive, exception-based management. Includes system architecture, SLA urgency scoring, and a projected unit economics breakdown of ₹21.6L/year in recovered penalties.",
-    tags: ["Unit Economics", "Operations Strategy", "Predictive Signals"],
-    icon: Presentation,
-    directLink: "logistic_optimizer_strategy_deck.pdf", 
+    name: "Logistic Optimizer V2: SLA Urgency Routing",
+    subtitle: "Operations Strategy Deck",
+    description: "Data-driven operational framework shifting B2B dispatch from reactive tracking to exception-based routing. Highlights ₹21.6L/year in recovered penalties.",
+    focus: "SLA Risk Scoring · Unit Economics · Proactive Logistics",
+    icon: FileText,
+    directLink: "/logistic_optimizer_strategy_deck.pdf",
   },
 ];
 
-const TeardownsAndStrategy = () => {
+export const TeardownsAndStrategy = () => {
   const [openId, setOpenId] = useState<string | null>(null);
-  const allItems = [...teardowns, ...strategyDecks];
-  const activeItem = allItems.find((d) => d.id === openId);
+
+  const activeItem = [...teardowns, ...strategyDecks].find((item) => item.id === openId);
 
   return (
-    <section className="py-28 px-6 border-t border-border">
+    <section id="teardowns" className="py-24 px-6 border-b border-border bg-background">
       <div className="container mx-auto max-w-5xl">
-        {/* Teardowns */}
-        <div className="section-fade-in">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Product Teardowns</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Analytical Deep-Dives</h2>
-          <p className="text-muted-foreground text-lg mb-14 max-w-xl">
-            Strategic breakdowns of how top products win.
+        {/* Section Header */}
+        <div className="mb-14">
+          <div className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-wider text-primary mb-3">
+            <Layers className="w-3.5 h-3.5" />
+            <span>Strategic Analysis</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-foreground">
+            Product Teardowns & Strategy Decks
+          </h2>
+          <p className="text-base sm:text-lg text-muted-foreground mt-3 max-w-2xl leading-relaxed">
+            Analytical breakdowns evaluating competitive moats, monetization mechanics, and unit economics across high-velocity technology products.
           </p>
         </div>
 
-        <div className="space-y-4 mb-20">
-          {teardowns.map((item, i) => (
+        {/* Teardowns Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-16">
+          {teardowns.map((item) => (
             <div
-              key={item.name}
+              key={item.id}
               onClick={() => setOpenId(item.id)}
-              className="group glow-border-hover rounded-xl bg-card p-6 md:p-8 flex flex-col md:flex-row md:items-center gap-4 md:gap-8 cursor-pointer transition-all duration-500 hover:-translate-y-0.5"
-              style={{ animationDelay: `${i * 100}ms` }}
+              className="group p-6 rounded-lg border border-border bg-card hover:border-white/[0.2] transition-all cursor-pointer flex flex-col justify-between"
             >
-              <div className="flex items-center gap-4 md:w-56 shrink-0">
-                <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center">
-                  <item.icon className="w-5 h-5 text-primary" />
+              <div>
+                <div className="flex items-center justify-between gap-3 mb-4">
+                  <div className="flex items-center gap-3">
+                    <div className="w-9 h-9 rounded bg-secondary/60 border border-border flex items-center justify-center shrink-0">
+                      <item.icon className="w-4 h-4 text-primary" />
+                    </div>
+                    <div>
+                      <h3 className="text-base font-bold text-foreground group-hover:text-primary transition-colors">
+                        {item.name}
+                      </h3>
+                      <span className="text-xs font-mono text-muted-foreground">{item.subtitle}</span>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-primary transition-colors" />
                 </div>
-                <div>
-                  <h3 className="font-semibold text-foreground text-lg">{item.name}</h3>
-                  <span className="text-xs text-muted-foreground">{item.subtitle}</span>
-                </div>
+
+                <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                  {item.description}
+                </p>
               </div>
-              <div className="flex-1">
-                <p className="text-muted-foreground text-sm leading-relaxed mb-1.5">{item.description}</p>
-                <p className="text-xs text-primary/80 font-medium">{item.focus}</p>
+
+              <div className="pt-3 border-t border-border/60 text-[11px] font-mono text-primary/80">
+                {item.focus}
               </div>
-              <button
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg border border-border text-foreground text-sm font-medium hover:border-primary/40 transition-all duration-300 shrink-0"
-              >
-                View Full Breakdown
-                <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
-              </button>
             </div>
           ))}
         </div>
 
-        {/* Strategic Research */}
-        <div className="section-fade-in">
-          <p className="text-primary text-sm font-medium tracking-widest uppercase mb-3">Strategic Research</p>
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">Strategy Decks</h2>
-          <p className="text-muted-foreground text-lg mb-14 max-w-xl">
-            Original strategy work and ecosystem analyses.
-          </p>
+        {/* Strategy Decks Header */}
+        <div className="mb-8">
+          <h3 className="text-xl font-bold text-foreground">Strategic Decks & Memos</h3>
+          <p className="text-xs text-muted-foreground mt-1">Deep-dive research papers and system designs.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+        {/* Strategy Decks Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {strategyDecks.map((deck) => {
-            // Reusable card content
-            const CardContent = (
-              <>
-                <div className="flex-1">
-                  <div className="flex items-start gap-4 mb-3">
-                    <div className="w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center shrink-0">
-                      <deck.icon className="w-6 h-6 text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-semibold text-foreground mb-2">{deck.name}</h3>
-                      <div className="flex items-center gap-2 flex-wrap">
-                        {deck.label && <span className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">{deck.label}</span>}
-                        {deck.tags && deck.tags.map(tag => <span key={tag} className="text-xs px-2.5 py-1 rounded-md bg-primary/10 text-primary font-medium">{tag}</span>)}
+            const Content = (
+              <div className="p-6 rounded-lg border border-border bg-card hover:border-white/[0.2] transition-all flex flex-col justify-between h-full">
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-4">
+                    <div className="flex items-center gap-3">
+                      <div className="w-9 h-9 rounded bg-secondary/60 border border-border flex items-center justify-center shrink-0">
+                        <deck.icon className="w-4 h-4 text-primary" />
+                      </div>
+                      <div>
+                        <h4 className="text-base font-bold text-foreground">{deck.name}</h4>
+                        <span className="text-xs font-mono text-muted-foreground">{deck.subtitle}</span>
                       </div>
                     </div>
+                    <ArrowUpRight className="w-4 h-4 text-muted-foreground" />
                   </div>
-                  <p className="text-muted-foreground text-sm leading-relaxed">{deck.description}</p>
+                  <p className="text-xs text-muted-foreground leading-relaxed mb-4">
+                    {deck.description}
+                  </p>
                 </div>
-                <div className="shrink-0 mt-6">
-                  <span className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground text-sm font-medium group-hover:border-primary/40 transition-all duration-300">
-                    View the full breakdown
-                    <ArrowUpRight className="w-4 h-4 group-hover:text-primary transition-colors" />
-                  </span>
+
+                <div className="pt-3 border-t border-border/60 text-[11px] font-mono text-primary/80">
+                  {deck.focus}
                 </div>
-              </>
+              </div>
             );
 
-            // If it has a directLink, wrap it in an <a> tag targeting a blank tab
             if (deck.directLink) {
               return (
                 <a
@@ -160,61 +174,53 @@ const TeardownsAndStrategy = () => {
                   href={deck.directLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1 flex flex-col no-underline block"
+                  className="block cursor-pointer"
                 >
-                  {CardContent}
+                  {Content}
                 </a>
               );
             }
 
-            // Otherwise, keep the default Modal opening behavior
             return (
               <div
                 key={deck.id}
                 onClick={() => setOpenId(deck.id)}
-                className="glow-border-hover rounded-xl bg-card p-8 md:p-10 group cursor-pointer transition-all duration-500 hover:-translate-y-1 flex flex-col"
+                className="cursor-pointer"
               >
-                {CardContent}
+                {Content}
               </div>
             );
           })}
         </div>
       </div>
 
-      {/* Full-screen dark modal */}
+      {/* Reader Modal */}
       <Dialog open={!!openId} onOpenChange={(open) => !open && setOpenId(null)}>
-        <DialogContent className="max-w-[95vw] w-[95vw] h-[90vh] p-0 bg-card border-border gap-0 overflow-hidden">
-          <DialogTitle className="sr-only">{activeItem?.name}</DialogTitle>
-          <div className="flex items-center justify-between px-6 py-4 border-b border-border shrink-0">
+        <DialogContent className="max-w-3xl w-[95vw] h-[85vh] p-0 bg-card border-border gap-0 overflow-hidden rounded-lg">
+          <DialogTitle className="sr-only">{activeItem?.name || "Teardown"}</DialogTitle>
+          <div className="flex items-center justify-between px-6 py-3.5 border-b border-border bg-secondary/30 shrink-0">
             <div className="flex items-center gap-3">
-              {activeItem && "icon" in activeItem && <activeItem.icon className="w-5 h-5 text-primary" />}
-              <span className="font-semibold text-foreground">{activeItem?.name}</span>
-              {activeItem && ("subtitle" in activeItem || "label" in activeItem) && (
-                <span className="text-xs px-2 py-0.5 rounded bg-primary/10 text-primary">
-                  {'subtitle' in activeItem ? activeItem.subtitle : activeItem.label}
-                </span>
-              )}
+              {activeItem?.icon && <activeItem.icon className="w-4 h-4 text-primary" />}
+              <span className="font-mono text-sm font-semibold text-foreground">{activeItem?.name}</span>
+              <span className="text-xs font-mono text-muted-foreground border-l border-border pl-3">
+                {activeItem?.subtitle}
+              </span>
             </div>
+            <button
+              onClick={() => setOpenId(null)}
+              className="p-1 rounded text-muted-foreground hover:text-foreground transition-colors cursor-pointer"
+            >
+              <X className="w-4 h-4" />
+            </button>
           </div>
-          {openId && ["cred", "razorpay", "snabbit", "upi", "galaxy"].includes(openId) ? (
-            <ScrollArea className="flex-1" style={{ height: "calc(90vh - 65px)" }}>
-              <div className="max-w-3xl mx-auto px-6 md:px-10 py-8">
-                {openId === "cred" && <CredBreakdown />}
-                {openId === "razorpay" && <RazorpayBreakdown />}
-                {openId === "snabbit" && <SnabbitBreakdown />}
-                {openId === "upi" && <UpiBreakdown />}
-                {openId === "galaxy" && <GalaxyBreakdown />}
-              </div>
-            </ScrollArea>
-          ) : (
-            <iframe
-              src={"iframeSrc" in (activeItem || {}) ? (activeItem as any).iframeSrc : "about:blank"}
-              className="w-full flex-1 border-0"
-              style={{ height: "calc(90vh - 65px)" }}
-              title={activeItem?.name}
-              allow="fullscreen"
-            />
-          )}
+
+          <ScrollArea className="flex-1 p-6 md:p-8" style={{ height: "calc(85vh - 54px)" }}>
+            {openId === "cred" && <CredBreakdown />}
+            {openId === "razorpay" && <RazorpayBreakdown />}
+            {openId === "snabbit" && <SnabbitBreakdown />}
+            {openId === "upi" && <UpiBreakdown />}
+            {openId === "galaxy" && <GalaxyBreakdown />}
+          </ScrollArea>
         </DialogContent>
       </Dialog>
     </section>

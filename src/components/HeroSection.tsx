@@ -1,10 +1,9 @@
 'use client';
 
 import { useState } from "react";
-import { ArrowDown, Mail, Calendar, Linkedin, Download, Check } from "lucide-react";
-import heroBg from "@/assets/hero-bg.png";
+import { Mail, Calendar, Linkedin, Download, Check, ArrowRight, ShieldCheck, Database, Layers } from "lucide-react";
 
-const HeroSection = () => {
+export const HeroSection = () => {
   const [emailCopied, setEmailCopied] = useState(false);
 
   const handleCopyEmail = () => {
@@ -16,99 +15,135 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background image */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src={heroBg}
-          alt=""
-          className="w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
-      </div>
-
-      <div className="relative z-10 container mx-auto px-6 text-center">
-        <div className="section-fade-in max-w-4xl mx-auto">
-          
-          {/* Availability Signal (CRITICAL for recruiters scanning in 3 seconds) */}
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 text-emerald-400 text-sm font-medium mb-8">
-            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            Currently seeking: Product Ops · Founder's Office — Available immediately
-          </div>
-
-          {/* Headline */}
-          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight leading-[1.1] mb-6">
-            <span className="text-foreground">Aryan Singhal</span>
-            <br />
-            <span className="text-gradient-primary">Technical Operator | Product × Ops × AI</span>
-          </h1>
-
-          {/* Subheadline (Replaced fluff with hard, undeniable metrics) */}
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            M.Sc. Economics (IIIT Lucknow · 9.2 CGPA) · Ran live ops at 2 early-stage startups · Shipped 5 AI products
-          </p>
-
-          {/* CTAs (Focused on direct contact and booking) */}
-          <div className="flex flex-wrap items-center justify-center gap-4">
-            
-            {/* Primary CTA: Calendly Booking */}
-            <a
-              href="https://calendly.com/aryansinghal352/30min"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-8 py-3.5 rounded-lg bg-primary text-primary-foreground font-medium text-base hover:brightness-110 transition-all duration-300 shadow-[0_0_20px_-5px_hsl(var(--glow)/0.4)]"
-            >
-              <Calendar className="w-4 h-4" />
-              Book 15-min Call
-            </a>
-
-            {/* Secondary CTA: Copy Email Button */}
-            <button
-              onClick={handleCopyEmail}
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg border border-border text-foreground font-medium text-base hover:bg-secondary transition-all duration-300 cursor-pointer"
-            >
-              {emailCopied ? <Check className="w-4 h-4 text-emerald-500" /> : <Mail className="w-4 h-4" />}
-              {emailCopied ? "Email Copied!" : "Copy Email"}
-            </button>
-            
-            {/* Secondary CTA: Resume Folder */}
-            <a
-              href="https://drive.google.com/drive/folders/1zOA9VTfNonvN4g8Up23I9lOHER8Gnd65?usp=sharing"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg border border-border text-foreground font-medium text-base hover:bg-secondary transition-all duration-300"
-            >
-              <Download className="w-4 h-4" />
-              Download Resumes
-            </a>
-
-            {/* Secondary CTA: LinkedIn */}
-            <a
-              href="https://www.linkedin.com/in/aryan-singhal-3583b8331/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg border border-border text-foreground font-medium text-base hover:bg-secondary transition-all duration-300"
-            >
-              <Linkedin className="w-4 h-4" />
-              LinkedIn
-            </a>
-
-            {/* Scroll down link */}
-            <a
-              href="#prototypes"
-              className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg border border-transparent text-muted-foreground hover:text-foreground font-medium text-base transition-all duration-300"
-            >
-              View Work
-              <ArrowDown className="w-4 h-4" />
-            </a>
-          </div>
+    <section className="relative pt-20 pb-24 px-6 border-b border-border/80 bg-background overflow-hidden">
+      <div className="container mx-auto max-w-5xl">
+        {/* Availability bar */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded border border-border bg-card/60 text-xs font-mono text-muted-foreground mb-8">
+          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+          <span>Role Focus: Founder's Office · BizOps · Product Operations (Series A & B)</span>
         </div>
-      </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <div className="w-5 h-8 rounded-full border-2 border-muted-foreground/30 flex items-start justify-center p-1">
-          <div className="w-1 h-2 rounded-full bg-muted-foreground/50 animate-bounce" />
+        {/* Primary Headline */}
+        <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight text-foreground leading-[1.1] mb-6">
+          Aryan Singhal
+          <span className="block text-2xl sm:text-3xl md:text-4xl font-medium text-muted-foreground mt-3">
+            Technical Operator & Systems Architect
+          </span>
+        </h1>
+
+        {/* Mission / Operator Positioning */}
+        <div className="max-w-3xl space-y-4 mb-10 text-base sm:text-lg text-muted-foreground leading-relaxed">
+          <p>
+            M.Sc. Economics graduate from <span className="text-foreground font-medium">IIIT Lucknow</span> (9.2 CGPA). 
+            Most operators write memos without understanding code, and most engineers build features without understanding unit economics.
+          </p>
+          <p>
+            I sit squarely in the middle: auditing take rates, contribution margins, and inventory buffers, then engineering the deterministic software, data contracts, and automation pipelines required to execute them.
+          </p>
+        </div>
+
+        {/* Action CTAs */}
+        <div className="flex flex-wrap items-center gap-3 mb-16">
+          <a
+            href="https://calendly.com/aryansinghal352/30min"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded bg-primary text-primary-foreground font-medium text-sm hover:brightness-110 transition-all"
+          >
+            <Calendar className="w-4 h-4" />
+            Book 15-min Call
+          </a>
+
+          <button
+            onClick={handleCopyEmail}
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-border bg-card text-foreground font-medium text-sm hover:bg-secondary/60 transition-all cursor-pointer"
+          >
+            {emailCopied ? <Check className="w-4 h-4 text-emerald-500" /> : <Mail className="w-4 h-4 text-muted-foreground" />}
+            {emailCopied ? "Email Copied" : "Copy Email"}
+          </button>
+
+          <a
+            href="https://drive.google.com/drive/folders/1zOA9VTfNonvN4g8Up23I9lOHER8Gnd65?usp=sharing"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-border bg-card text-foreground font-medium text-sm hover:bg-secondary/60 transition-all"
+          >
+            <Download className="w-4 h-4 text-muted-foreground" />
+            Download Resume
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/aryan-singhal-3583b8331/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-4 py-2.5 rounded border border-border bg-card text-muted-foreground hover:text-foreground font-medium text-sm hover:bg-secondary/60 transition-all"
+          >
+            <Linkedin className="w-4 h-4" />
+            LinkedIn
+          </a>
+
+          <a
+            href="#systems"
+            className="inline-flex items-center gap-1.5 px-3 py-2.5 text-muted-foreground hover:text-foreground text-sm font-medium transition-colors ml-auto hidden sm:inline-flex"
+          >
+            Jump to Proof of Work
+            <ArrowRight className="w-4 h-4" />
+          </a>
+        </div>
+
+        {/* Hard Proof Metrics Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border/80 border border-border/80 rounded overflow-hidden">
+          <div className="bg-card p-5">
+            <div className="flex items-center gap-2 text-muted-foreground text-xs font-mono mb-2">
+              <Database className="w-3.5 h-3.5 text-primary" />
+              <span>Scale Handled</span>
+            </div>
+            <div className="text-2xl font-bold font-mono tracking-tight text-foreground tabular-nums">
+              310,000+
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Customers profiled in real time from 809k+ orders
+            </p>
+          </div>
+
+          <div className="bg-card p-5">
+            <div className="flex items-center gap-2 text-muted-foreground text-xs font-mono mb-2">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              <span>Integrity Logic</span>
+            </div>
+            <div className="text-2xl font-bold font-mono tracking-tight text-foreground tabular-nums">
+              30 Checks
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Zero-assertion conservation checks per procurement run
+            </p>
+          </div>
+
+          <div className="bg-card p-5">
+            <div className="flex items-center gap-2 text-muted-foreground text-xs font-mono mb-2">
+              <Layers className="w-3.5 h-3.5 text-primary" />
+              <span>Simulation Speed</span>
+            </div>
+            <div className="text-2xl font-bold font-mono tracking-tight text-foreground tabular-nums">
+              ~40 ms
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              In-memory bitset recalculation without NumPy/Pandas
+            </p>
+          </div>
+
+          <div className="bg-card p-5">
+            <div className="flex items-center gap-2 text-muted-foreground text-xs font-mono mb-2">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-500" />
+              <span>Reconciliation</span>
+            </div>
+            <div className="text-2xl font-bold font-mono tracking-tight text-foreground tabular-nums">
+              0 Discrepancy
+            </div>
+            <p className="text-xs text-muted-foreground mt-1">
+              Daily CFO-level COD cash audits in zero-buffer supply chains
+            </p>
+          </div>
         </div>
       </div>
     </section>
